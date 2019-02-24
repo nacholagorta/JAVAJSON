@@ -15,7 +15,7 @@ public class JsonModel implements DataManager {
     private Instrumental newInstrumental;
 
     ApiRequests encargadoPeticiones;
-    private String SERVER_PATH, GET_TEMA, GET_INSTRUMENTAL, SET_TEMA, SET_CURSE; // Datos de la conexion
+    private String SERVER_PATH, GET_TEMA, GET_INSTRUMENTAL, SET_TEMA, SET_INSTRUMENTAL; // Datos de la conexion
 
     public JsonModel() {
         char c;
@@ -26,7 +26,7 @@ public class JsonModel implements DataManager {
         GET_TEMA = "readTema.php";
         GET_INSTRUMENTAL = "readInstrumental.php";
         SET_TEMA = "writeTema.php";
-        SET_CURSE = "writeInstrumental.php";
+        SET_INSTRUMENTAL = "writeInstrumental.php";
 
     }
 
@@ -62,24 +62,24 @@ public class JsonModel implements DataManager {
 
     @Override
     public void addInstrumentales(Instrumental instrumental) throws FileNotFoundException, IOException {
-/*
+
         try {
-            JSONObject objJCurse = new JSONObject();
+            JSONObject objJInstrumental = new JSONObject();
             JSONObject objPeticion = new JSONObject();
 
-            objJCurse.put("int_id", auxCurse.getInt_id());
-            objJCurse.put("str_mname", auxCurse.getStr_mname());
-            objJCurse.put("str_mfirst_characteristic", auxCurse.getStr_mfirst_characteristic());
-            objJCurse.put("str_msecond_characteristic", auxCurse.getStr_msecond_characteristic());
-            objJCurse.put("str_mthird_characteristic", auxCurse.getStr_mthird_characteristic());
+            objJInstrumental.put("Id_Instrumental", instrumental.getId_Instrumental());
+            objJInstrumental.put("Nombre", instrumental.getNombre());
+            objJInstrumental.put("Productor", instrumental.getProductor());
+            objJInstrumental.put("Genero", instrumental.getGenero());
+            
 
             objPeticion.put("peticion", "add");
-            objPeticion.put("curse", objJCurse);
+            objPeticion.put("instrumentales", objJInstrumental);
 
             String json = objPeticion.toJSONString();
-            String url = SERVER_PATH + SET_CURSE;
+            String url = SERVER_PATH + SET_INSTRUMENTAL;
             String response = encargadoPeticiones.postRequest(url, json);
-            System.out.print("Insert hecho");
+            System.out.print(response);
 
         } catch (Exception e) {
             System.out.println(
@@ -89,7 +89,7 @@ public class JsonModel implements DataManager {
             System.exit(-1);
         }
 
-     */
+     
 
     }
 
